@@ -1,0 +1,14 @@
+package utilities;
+
+public class LocatorHelper {
+	
+	/***
+	 * 
+	 * This method helps in click of a button if there is any intercept exception
+	 * 
+	 */
+
+	void javaScriptExecuterClick() {
+		
+	}
+}

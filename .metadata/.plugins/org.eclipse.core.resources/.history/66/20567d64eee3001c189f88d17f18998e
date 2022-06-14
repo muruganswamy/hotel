@@ -1,0 +1,20 @@
+package testproject;
+
+import java.util.ArrayList;
+ class Car
+{
+
+}
+public class Test {
+
+	public static void main(String[] args) {
+		ArrayList<Car> alist=new ArrayList<Car>();
+		Car safariCar=new Car();
+		Car hondaWrv=new Car();
+		alist.add(safariCar);
+		alist.add(hondaWrv);
+		System.out.println(alist);
+
+	}
+
+}

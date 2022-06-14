@@ -1,0 +1,35 @@
+package com.hotel.restaurant;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+public class TestAssertion {
+	
+	SoftAssert softAssert1=new SoftAssert();
+	SoftAssert softAssert2=new SoftAssert();
+  @Test
+  public void testAssertion() {
+	  
+	  softAssert1.assertTrue(true==true);
+	  softAssert1.assertEquals("test", "Test","Test is not validating and its wrong even in differnt spellings");
+	  softAssert1.assertEquals("name","name");
+	  System.out.println("Successfully Passed");
+	  softAssert1.assertAll();
+	  
+	  
+	  
+  }
+  @Test
+  public void testAssertion1() {
+	  
+	  softAssert2.assertTrue(true==true);
+	  softAssert2.assertEquals("Test", "Test");
+	  softAssert2.assertEquals("name","name");
+	  System.out.println("Successfully Passed");
+	  softAssert2.assertAll();
+	  
+	  
+	  
+  }
+}

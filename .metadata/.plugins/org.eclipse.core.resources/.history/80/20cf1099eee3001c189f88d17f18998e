@@ -1,0 +1,39 @@
+package testproject;
+
+import java.util.ArrayList;
+import java.util.Objects;
+ class Car
+{
+	 int CarNumber;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(CarNumber);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		return CarNumber == other.CarNumber;
+	}
+
+}
+public class Test {
+
+	public static void main(String[] args) {
+		ArrayList<Car> alist=new ArrayList<Car>();
+		Car safariCar=new Car();
+		Car hondaWrv=new Car();
+		alist.add(safariCar);
+		alist.add(hondaWrv);
+		System.out.println(alist);
+
+	}
+
+}

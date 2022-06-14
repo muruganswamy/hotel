@@ -1,0 +1,22 @@
+package com.hotel.restaurant;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+public class TestAssertion {
+	
+	SoftAssert softAssert=new SoftAssert();
+  @Test
+  public void testAssertion() {
+	  
+	  softAssert.assertTrue(true==true);
+	  softAssert.assertEquals("Test", "Test");
+	  softAssert.assertEquals("name","name");
+	  System.out.println("Successfully Passed");
+	  softAssert.assertAll();
+	  
+	  
+	  
+  }
+}

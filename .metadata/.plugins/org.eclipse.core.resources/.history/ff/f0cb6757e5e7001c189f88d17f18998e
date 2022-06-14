@@ -1,0 +1,141 @@
+package com.hotel.restaurant;
+
+import org.testng.annotations.Test;
+
+import utilities.LocatorHelper;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+
+	
+	WebDriver driver;
+	Connection con;
+	
+	@Parameters("browserName")
+	@BeforeTest
+	public void beforTest(String browserName)
+	{
+		utilities.LocatorHelper locatorHelper=new utilities.LocatorHelper();
+	
+		if(browserName.equalsIgnoreCase("chrome")) {
+			System.setProperty("webdriver.chrome.driver", "C:\\browsers_driver\\chrome\\chromedriver.exe");
+
+			driver = new ChromeDriver();
+			
+		}else if(browserName.equalsIgnoreCase("firefox")) {
+			
+			
+			System.setProperty("webdriver.gecko.driver", "C:\\browsers_driver\\firefox\\geckodriver.exe");
+
+			driver = new  FirefoxDriver();
+		}
+		
+	}
+	Statement stmt;
+	/*
+	 * Set up environemnt before each test
+	 * 
+	 */
+	@BeforeMethod
+	public void setupEnv() throws Exception{
+		
+		
+	}
+
+	/**
+	 * Rigorous Test :-)
+	 */
+
+	@Test
+	public void verifyThatWebBrowserStart() {
+
+		driver.get("https://www.google.com");
+
+	}
+
+	@Test
+	public void verifyThatTitle() throws Exception {
+
+		driver.get("https://www.google.com");
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
+	}
+	
+	@Test
+	public void verifyThatLoingWorkingFine() throws Exception {
+
+		driver.get("https://www.google.com");
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
+	}
+
+	@Test
+	public void verifyGoogleSearchWorking() throws SQLException, ClassNotFoundException {
+
+		Class.forName("com.mysql.jdbc.Driver");
+		 con=DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb","root","root");
+		 stmt=con.createStatement();
+		driver.get("https://www.google.com");
+		
+		 driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+		 String title=driver.getTitle();
+		 
+		 String expected="Google";
+		 
+		 Assert.assertEqual(title,expected);
+		 System.out.println("###########  "+title);
+		WebElement textBox = driver.findElement(By.name("q"));
+
+		
+		// get data from the sql server
+		ResultSet resultSet=stmt.executeQuery("select * from person where firstname like '%famous%'");
+		resultSet.next();
+		
+		String data=resultSet.getString(3);
+		
+		System.out.println("******************  "+data);
+		
+		textBox.sendKeys(data);
+
+		// driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+
+		textBox.sendKeys(Keys.ENTER);
+
+	}
+
+	@AfterMethod
+	public void closeBrowser() {
+		driver.quit();
+		;
+	}
+
+	@AfterSuite
+	public void cleanEnv() {
+		driver.close();
+	}
+}

@@ -1,0 +1,45 @@
+package com.hotel.restaurant;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+/**
+ * Unit test for simple App.
+ */
+public class AppTest {
+	
+	WebDriver driver ;
+	
+	/*
+	 * Set up environemnt before each test
+	 * 
+	 */
+	@BeforeTest
+	public void setupEnv() {
+		System.setProperty("webdriver.chrome.driver", "C:\\browsers_driver\\chrome\\chromedriver.exe");
+
+		driver= new ChromeDriver();
+
+	}
+	
+	/**
+	 * Rigorous Test :-)
+	 */
+	
+	
+	@Test
+	public void verifyThatWebBrowserStart() {
+		
+		
+		driver.get("https://www.google.com");
+
+		
+	}
+	
+	
+	@AfterTest
+	public void cleanEnvironment() {
+		driver.close();	}
+}

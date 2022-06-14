@@ -1,0 +1,14 @@
+package com.hotel.restaurant;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class TestAssertion {
+  @Test
+  public void testAssertion() {
+	  
+	  Assert.assertTrue(true==true);
+	  
+	  
+  }
+}

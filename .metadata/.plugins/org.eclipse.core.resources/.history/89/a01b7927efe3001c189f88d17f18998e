@@ -1,0 +1,54 @@
+package testproject;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+ class Car
+{
+	 int CarNumber;
+	 String name;
+	 
+
+	public Car(int carNumber, String name) {
+		super();
+		CarNumber = carNumber;
+		this.name = name;
+	}
+
+	
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		
+		return name;
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
+
+}
+public class Test {
+
+	public static void main(String[] args) {
+		Set<Car> alist=new HashSet<Car>();
+		Car safariCar=new Car(1,"safariCar");
+		Car hondaWrv=new Car(2,"hondaWrvCar");
+		
+		alist.add(safariCar);
+		alist.add(hondaWrv);
+		System.out.println(alist);
+
+	}
+
+}

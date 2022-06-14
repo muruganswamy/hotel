@@ -1,0 +1,25 @@
+package testproject;
+
+import java.util.*;
+ public class Test {
+
+	public static void main(String[] args) {
+	HashSet hs=new HashSet();
+	LinkedHashSet lhs=new LinkedHashSet();
+	TreeSet ts=new TreeSet();
+	
+	ArrayList al=new ArrayList();
+	
+
+	ts.add("KLM");
+	ts.add("KLM");
+	al.add("KLM");
+	al.add("KLM");
+	
+	System.out.println("set "+hs);
+	
+	System.out.println("List "+al);
+
+	}
+
+}
